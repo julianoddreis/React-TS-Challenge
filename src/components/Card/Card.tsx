@@ -1,24 +1,22 @@
-import { CardContainer, CardImage } from './Card.styles'
+import { CardContainer, CardImage, Title, Date, Average } from './Card.styles'
+import { getImageUrl } from '../../helpers/image'
+import { formatDate } from '../../helpers/date'
 
 interface CardProps {
+  title: any
   image: string
-  name: any
-  homePort: any
-  roles: any
+  date: string
+  average: number
 }
 
 const Card = (props: CardProps) => {
-  const { image, name, homePort, roles } = props
+  const { title, image, date, average } = props
   return (
     <CardContainer>
-      <CardImage image={image} />
-      <h1>{name}</h1>
-      <h2>{homePort}</h2>
-      <ul>
-        {roles.map((role: any) => (
-          <li key={role}>{role}</li>
-        ))}
-      </ul>
+      <CardImage image={getImageUrl(image)} />
+      <Title>{title}</Title>
+      <Date>{formatDate(date)}</Date>
+      <Average>{average}</Average>
     </CardContainer>
   )
 }

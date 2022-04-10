@@ -1,14 +1,42 @@
 import { Card } from '../../components/Card'
-import dummyData from '../../dummyData.json' // To be replaced with your api response data
-import { HomeContainer } from './Home.styles'
+import { Loader } from '../../components/Loader'
+import { Error } from '../../components/Error'
 
-export const Home = () => {
+import { MoviesContainer } from './Home.styles'
+
+import useDiscoverMovies from '../../hooks/useDiscoverMovies'
+
+const MoviesList = () => {
+  const { movies, isLoading, error } = useDiscoverMovies()
+
+  if (isLoading) {
+    return <Loader />
+  }
+
+  if (error) {
+    return <Error />
+  }
+
+  return (
+    <MoviesContainer>
+      {movies?.map((movie) => (
+        <Card
+          key={movie.id}
+          title={movie.title}
+          image={movie.backdrop_path}
+          date={movie.release_date}
+          average={movie.vote_average}
+        />
+      ))}
+    </MoviesContainer>
+  )
+}
+
+const Home = () => {
   return (
     <>
-      <h1>Space X Ships</h1>
-      <HomeContainer>
-        <Card image={dummyData.image} name={dummyData.name} homePort={dummyData.home_port} roles={dummyData.roles} />
-      </HomeContainer>
+      <h1>Discover movies</h1>
+      <MoviesList />
     </>
   )
 }
