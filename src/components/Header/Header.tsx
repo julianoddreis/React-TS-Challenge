@@ -9,6 +9,7 @@ const Header = () => {
       <StyledNav>
         <img src={logo} alt='logo' />
         <Link to='/'>Home</Link>
+        <Link to='/search'>Search</Link>
       </StyledNav>
     </StyledHeader>
   )
