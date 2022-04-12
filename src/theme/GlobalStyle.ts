@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     max-width: 1200px;
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export default GlobalStyle

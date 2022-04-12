@@ -7,4 +7,7 @@ interface DiscoverMoviesResponse {
   total_pages: number
   total_results: number
 }
+
 export const getDiscoverMovies = () => api.get<DiscoverMoviesResponse>('discover/movie')
+
+export const getMovieById = (movieId: string) => api.get<Movie>(`/movie/${movieId}`)

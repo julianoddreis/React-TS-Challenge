@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { Card } from '../../components/Card'
 import { Loader } from '../../components/Loader'
 import { Error } from '../../components/Error'
@@ -20,13 +22,14 @@ const MoviesList = () => {
   return (
     <MoviesContainer>
       {movies?.map((movie) => (
-        <Card
-          key={movie.id}
-          title={movie.title}
-          image={movie.backdrop_path}
-          date={movie.release_date}
-          average={movie.vote_average}
-        />
+        <Link key={movie.id} to={`/movie/${movie.id}`}>
+          <Card
+            title={movie.title}
+            image={movie.backdrop_path}
+            date={movie.release_date}
+            average={movie.vote_average}
+          />
+        </Link>
       ))}
     </MoviesContainer>
   )
